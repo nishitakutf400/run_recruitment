@@ -1,0 +1,28 @@
+<div class="margin-top bottom">
+	<h1>投稿一覧</h1>
+	<%= link_to"新規募集",new_recitment_path %>
+	<table class="table table-hover table-inverse">
+		<thead>
+			<tr>
+				<th>ユーザー</th>
+				<th>県</th>
+				<th>タイトル</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @recitment.each do |recitment| %>
+				<tr>
+					<td>
+						<%= link_to recitment.user.nickname, recitment.user %>
+					</td>
+					<td>
+						<%= recitment.prefecture %>
+					</td>
+					<td>
+						<%= link_to recitment.title, recitment %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+</div>
+

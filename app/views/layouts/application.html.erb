@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RunRecruitment</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top">
+      <div class="container">
+              <h3 class="nav navbar-nav navbar-left"><%= link_to "runner", root_path %></h3>
+
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+              <li><%= link_to"初めての方へ", homes_about_path %></li>
+              <li>応募一覧</li>
+              <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete %></li>
+              <li>お問い合わせ</li>
+              <% else %>
+              <li> <%= link_to "初めての方へ", homes_about_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to"ログイン", new_user_session_path %></li>
+              <li>お問い合わせ</li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+    <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
