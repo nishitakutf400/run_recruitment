@@ -11,7 +11,7 @@ class RecitmentsController < ApplicationController
 
 	private
 	def recitment_params
-		params.require(:recitment).permit(:prefecture, :title)
+		params.require(:recitment).permit(:prefecture_code, :title, :comment)
 
 	end
 end

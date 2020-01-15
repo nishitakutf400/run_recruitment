@@ -1,9 +1,9 @@
 class HomesController < ApplicationController
 	def top
-		@recitment = Recitment.all
+		@recitments = Recitment.all
 	end
 
 	def about
 	end
-	
+
 end

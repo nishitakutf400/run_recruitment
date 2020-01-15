@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_11_050211) do
+ActiveRecord::Schema.define(version: 2020_01_15_105041) do
 
   create_table "recitments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "prefecture", null: false
+    t.integer "prefecture_code", null: false
     t.text "title", null: false
     t.string "postal_code"
     t.string "address"
