@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   
   has_many :recitments, dependent: :destroy
+
+  enum gender: { 男: 0, 女: 2}
 end
