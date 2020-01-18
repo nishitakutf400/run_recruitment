@@ -12,6 +12,8 @@
 		<td></td>
 	</tr>
 
+
+
 	<tr>
 		<th>ランニングコース</th>
 		<td></td>
@@ -39,18 +41,42 @@
 
 	<tr>
 		<th>更新日</th>
-		<td><%= @recient.created_at %></td>
+		<td></td>
 	</tr>
 </table>
 
 <table>
 
 	<tr>
-		<th>男女比</tr>
+		<th>応募状況</tr>
+		<td></td>
+	</tr>
+	<tr>
+		<th>男女比</th>
 		<td></td>
 	</tr>
 
 </table>
+
+<% if @user == current_user %>
+	<table>
+		<tr>
+			<th>応募一覧</th>
+			<td></td>
+		</tr>
+		<tr>
+			<th>応募状況変更</th>
+			<tr></tr>
+		</tr>
+		<tr>
+			<th>中止にしますか？</th>
+			<td>はい</td>
+		</tr>
+	</table>
+<% else %>
+	<%= link_to "応募する" offer_thank_path(current_user.id) %>
+<% end %>
+
 
 </div>
 
