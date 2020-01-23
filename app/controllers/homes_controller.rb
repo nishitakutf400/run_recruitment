@@ -1,9 +1,12 @@
 class HomesController < ApplicationController
 	def top
-		@recitments = Recitment.all
+		@recitments = Recitment.where('runtime > ?', Time.zone.today)
 	end
 
 	def about
 	end
 
+
+
 end
+

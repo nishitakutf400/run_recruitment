@@ -66,6 +66,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'enum_help'
 gem 'jp_prefecture'
+gem 'rb-readline'
 
 group :production do
   gem 'mysql2'

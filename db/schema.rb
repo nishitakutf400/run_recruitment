@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_083537) do
+ActiveRecord::Schema.define(version: 2020_01_20_143839) do
 
   create_table "offers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "recitment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recitment_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recitment_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,7 +33,11 @@ ActiveRecord::Schema.define(version: 2020_01_17_083537) do
     t.text "title", null: false
     t.string "postal_code"
     t.string "address"
-    t.text "comment"
+    t.text "comment", null: false
+    t.text "practice", null: false
+    t.text "running_couse", null: false
+    t.integer "nambar_people", null: false
+    t.datetime "runtime"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_01_17_083537) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "offer_id"
     t.string "nickname", null: false
     t.integer "gender", null: false
     t.string "introduce"

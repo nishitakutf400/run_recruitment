@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   
   has_many :recitments, dependent: :destroy
-  has_many :offers
+  has_many :offers, dependent: :destroy
+  has_many :recitment_comments, dependent: :destroy
 
   enum gender: { 男: 0, 女: 2}
 end

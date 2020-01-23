@@ -4,8 +4,24 @@ class RecitmentsController < ApplicationController
 		@recitments = Recitment.all
 	end
 
+	def show
+		@recitment = Recitment.find(params[:id])
+		@recitment_comment = RecitmentComment.new
+
+	end
+
 	def new
 		@recitment = Recitment.new
+	end
+
+	def edit
+		@recitment = Recitment.find(params[:id])
+	end
+
+	def update
+		recitment = Recitment.find(params[:id])
+		recitment.update(recitment_params)
+		redirect_to root_path
 	end
 
 	def create
@@ -14,13 +30,18 @@ class RecitmentsController < ApplicationController
 		redirect_to root_path(@recitment.id)
 	end
 
-	def show
+
+	
+
+	def destroy
 		@recitment = Recitment.find(params[:id])
+		@recitment.destroy
+		redirect_to root_path
 	end
 
 	private
 	def recitment_params
-		params.require(:recitment).permit(:prefecture_code, :title, :comment)
+		params.require(:recitment).permit(:prefecture_code, :title, :comment, :running_couse, :nambar_people, :practice, :runtime)
 
 	end
 end

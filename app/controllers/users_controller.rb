@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+	def index
+		@user = current_user
+		@offers = @user.offers
+	end
+
 	def show
 		@user = User.find(params[:id])
 	end

@@ -1,0 +1,32 @@
+<div class="margin-top">
+	<h3>応募編集</h3>
+	<%= form_for(@recitment) do |f| %>
+
+	<%= f.label :"県を指定" %><br>
+		<%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %>　<br>
+
+		<%= f.label :"タイトル" %><br>
+		<%= f.text_field :title %><br>
+
+		<%= f.label :"集合場所" %><br>
+		<%= f.text_area :running_couse %><br>
+
+
+		<%= f.label :"集合時間" %>
+		<%= f.datetime_select :runtime, {}, class:'form-control' %>
+
+		<%= f.label :"走行時間"%><br>
+		
+
+		<%= f.label :"人数" %><br>
+
+
+
+
+		<%= f.label :"募集要項" %><br>
+		<%= f.text_area :comment %><br>
+
+	<%= f.submit'更新' %>
+
+	<% end %>
+</div>

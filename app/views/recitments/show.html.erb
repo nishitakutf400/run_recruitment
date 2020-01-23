@@ -7,75 +7,92 @@
 		<td><%= @recitment.user.nickname %></td>
 	</tr>
 
-	<tr>
-		<th>タイトル</th>
-		<td></td>
-	</tr>
-
 
 
 	<tr>
-		<th>ランニングコース</th>
-		<td></td>
+		<th>集合場所</th>
+		<td><%= @recitment.running_couse %></td>
 	</tr>
 
 	<tr>
 		<th>集合時間</th>
-		<td></td>
+		<td><%= @recitment.runtime.strftime('%Y/%m/%d/%h/%M') %></td>
 	</tr>
 
 	<tr>
 		<th>走行時間</th>
-		<td></td>
+		<td><%= @recitment.practice %></td>
 	</tr>
 
 	<tr>
 		<th>募集人数</th>
-		<td></td>
+		<td><%= @recitment.nambar_people %>人</td>
 	</tr>
 
 	<tr>
-		<th>連絡事項</th>
+		<th>募集要望</th>
 		<td><%= @recitment.comment %></td>
 	</tr>
 
 	<tr>
-		<th>更新日</th>
-		<td></td>
+		<td>
+
+		</td>
 	</tr>
+
+
+
 </table>
 
 <table>
 
 	<tr>
-		<th>応募状況</tr>
-		<td></td>
+		<th>応募状況</th>
+		<td><%= @recitment.offers.count %></td>
+		
 	</tr>
-	<tr>
-		<th>男女比</th>
-		<td></td>
-	</tr>
+
+	<td><%= @recitment.nambar_people - @recitment.offers.count %></td>
 
 </table>
 
-<% if @user == current_user %>
+<% if @recitment.user == current_user %>
 	<table>
 		<tr>
-			<th>応募一覧</th>
-			<td></td>
+			<th><%= link_to "応募者", recitment_offers_path(@recitment) %></th>
 		</tr>
 		<tr>
-			<th>応募状況変更</th>
-			<tr></tr>
+			<th><%= link_to "募集内容変更", edit_recitment_path(@recitment) %></th>
 		</tr>
 		<tr>
-			<th>中止にしますか？</th>
-			<td>はい</td>
+			<th><%= link_to "中止にする", recitment_path(@recitment), method: :delete %></th>
 		</tr>
 	</table>
 <% else %>
-	<%= link_to "応募する" offer_thank_path(current_user.id) %>
+	<% if @recitment.favorited_by?(current_user) %>
+		<%= link_to recitment_offers_path(@recitment), method: :delete do %>応募をキャンセルする
+		<% end %>
+		<% else %>
+
+		<%= link_to recitment_offers_path(@recitment), method: :post do %>応募する
+	     <% end %>
+	<% end %>
 <% end %>
+
+<% @recitment.recitment_comments.each do |comment| %>
+	<%= comment.user.nickname %>
+	<%= comment.created_at.strftime('%Y/%m/%d') %>
+	<%= comment.comment %>
+<% end %>
+
+<%= form_for [@recitment, @recitment_comment] do |f| %>
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
+
+
+
+
 
 
 </div>

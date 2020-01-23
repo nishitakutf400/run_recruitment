@@ -6,7 +6,10 @@ class CreateRecitments < ActiveRecord::Migration[5.2]
       t.text :title, null: false
       t.string :postal_code
       t.string :address
-      t.text :comment
+      t.text :comment, null: false
+      t.text :practice, null: false
+      t.text :running_couse, null: false
+      t.integer :nambar_people, null: false
     end
   end
 end

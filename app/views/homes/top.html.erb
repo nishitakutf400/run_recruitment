@@ -13,6 +13,8 @@
 				<th>ユーザー</th>
 				<th>県</th>
 				<th>タイトル</th>
+				<th>募集日</th>
+				<th>残り募集人数</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,8 +29,13 @@
 					<td>
 						<%= link_to recitment.title, recitment %>
 					</td>
+					<td><%= recitment.runtime %></td>
+					<td><%= recitment.nambar_people - recitment.offers.count %>人</td>
 				</tr>
 			<% end %>
 		</tbody>
+
+
+
 </div>
 
