@@ -9,24 +9,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header class="navbar navbar-fixed-top">
+  <body class="wf-notosansjapanese">
+    <header class="navbar header">
       <div class="container">
-              <h3 class="nav navbar-nav navbar-left"><%= link_to "runner", root_path %></h3>
-
-            <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
-              <li><%= link_to"初めての方へ", homes_about_path %></li>
-              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-              <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete %></li>
-              <li>お問い合わせ</li>
-              <% else %>
-              <li> <%= link_to "初めての方へ", homes_about_path %></li>
-              <li><%= link_to "新規登録", new_user_registration_path %></li>
-              <li><%= link_to"ログイン", new_user_session_path %></li>
-              <li>お問い合わせ</li>
-              <% end %>
-            </ul>
+        <div class="row">
+              <h4 class="navbar-left"><%= link_to "runner", root_path %>
+              </h4>
+                <ul class="nav navbar-nav navbar-right">
+                  <% if user_signed_in? %>
+                    <li><span class="glyphicon glyphicon-leaf" aria-hidden="true"><%= link_to"初めての方へ", homes_about_path %></span></li>
+                    <li><span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to current_user.nickname + "さん", user_path(current_user.id) %></span></li>
+                    <li><span class="glyphicon glyphicon-export" aria-hidden="true"><%= link_to"ログアウト", destroy_user_session_path, method: :delete %></span></li>
+                    <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"><%= link_to"お問い合わせ" %></span></li>
+                  <% else %>
+                    <li><span class="glyphicon glyphicon-leaf" aria-hidden="true"><%= link_to "初めての方へ", homes_about_path %></span></li>
+                    <li><span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"><%= link_to "新規登録", new_user_registration_path %></span></li>
+                    <li><span class="glyphicon glyphicon-import" aria-hidden="true"><%= link_to"ログイン", new_user_session_path %></span></li>
+                    <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"><%= link_to "お問い合わせ" %></span></li>
+                  <% end %>
+                </ul>
         </div>
       </div>
     </header>

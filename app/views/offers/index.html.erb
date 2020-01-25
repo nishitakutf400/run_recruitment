@@ -1,0 +1,15 @@
+<div>
+	<h3>応募一覧</h3>
+	<teable>
+		<tr>
+			<th>応募タイトル</th>
+			<th>募集時間</th>
+		</tr>
+		<% @user.offers.each do |f|%>
+		<tr>
+			<td><%= link_to f.recitment.title, recitment_path(f.recitment) %></td>
+			<td><%= f.recitment.runtime %></td>
+			<% end %>
+		</tr>
+	</teable>
+</div>

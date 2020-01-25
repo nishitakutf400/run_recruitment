@@ -1,5 +1,9 @@
 class OffersController < ApplicationController
 
+    def index
+        @user = current_user
+    end
+
 	def thank
 	end
 

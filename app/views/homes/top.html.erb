@@ -1,19 +1,27 @@
-<div class="margin-top">
-	<h1>投稿一覧</h1>
-	
-	<% if user_signed_in? %>
-		<%= link_to"新規募集",new_recitment_path %>
-	<% else %>
-		<%= link_to"新規登録", new_user_session_path %>
-	<% end %>
+<div class="width">
 
-	<table class="table table-hover table-inverse">
+	<h3>投稿一覧</h3>
+
+	<button type="button" >
+		<% if user_signed_in? %>
+			<%= link_to"新規募集",new_recitment_path %>
+		<% else %>
+			<%= link_to"新規募集", new_user_session_path %>
+		<% end %>
+	</button>
+
+		<%= form_tag(root_path,:method => 'get') do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search', :name => nil %>
+		<% end %>
+
+	<table class="table table-hover table-inverse　table-bordered">
 		<thead>
 			<tr>
 				<th>ユーザー</th>
 				<th>県</th>
 				<th>タイトル</th>
-				<th>募集日</th>
+				<th><%= sort_link @q, :runtime, '募集日' %></th>
 				<th>残り募集人数</th>
 			</tr>
 		</thead>
@@ -21,18 +29,31 @@
 			<% @recitments.each do |recitment| %>
 				<tr>
 					<td>
-						<%= link_to recitment.user.nickname, recitment.user %>
+						<% if user_signed_in? %>
+							<%= link_to recitment.user.nickname, recitment.user %>
+						<% else %>
+							<%= link_to recitment.user.nickname, new_user_session_path %>
+						<% end %>
 					</td>
 					<td>
 						<%= recitment.pref.name %>
 					</td>
 					<td>
-						<%= link_to recitment.title, recitment %>
+						<% if user_signed_in? %>
+							<%= link_to recitment.title, recitment %>
+						<% else %>
+							<%= link_to recitment.title, new_user_session_path %>
+						<% end %>
 					</td>
-					<td><%= recitment.runtime %></td>
-					<td><%= recitment.nambar_people - recitment.offers.count %>人</td>
+					<td><%= recitment.runtime.strftime('%Y/%m/%d') %></td>
+					<td><% if 0 == (recitment.nambar_people - recitment.offers.count) %>
+						<span><font color=#ff0000>応募人数達成</font></span>
+						<% else %>
+							<%= recitment.nambar_people - recitment.offers.count %>人</td>
+						<% end %>
 				</tr>
 			<% end %>
+			<%= paginate @recitments %>
 		</tbody>
 
 

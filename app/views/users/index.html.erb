@@ -1,6 +1,14 @@
-<div class="margin-top">
-	<h3>応募履歴</h3>
-	<% @offers.each do |f| %>
-	<%= f.user.nickname %>
-	<% end %>
+<div>
+	<h3>募集一覧</h3>
+	<table>
+		<tr>
+			<th>募集タイトル</th>
+			<th>募集時間</th>
+		</tr>
+		<% @user.recitments.each do |f| %>
+		<tr>
+			<td><%= link_to f.title, recitment_path(f) %></td>
+			<td><%= f.runtime %></td><% end %>
+		</tr>
+	</table>
 </div>

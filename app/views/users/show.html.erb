@@ -1,32 +1,37 @@
+<div class="width">
+	 <h3>ユーザー詳細</h3>
 
-<div class="margin-top">
-	 <h1>ユーザー詳細</h1>
+	 <table class="table">
+	 	<tbody>
+		 	<tr>
+		 		<th>ユーザーネーム</th>
+		 		<td><%= @user.nickname %></td>
+		 	</tr>
 
-	<div>
-		 <span><%= "ユーザー" %></span>
-		 <span><%= @user.nickname %></span>
-	</div>
+		 	<tr>
+		 		<th>性別</th>
+		 		<td><%= @user.nickname %></td>
+		 	</tr>
 
-	<div>
-		<span>性別</span>
-		<span><%= @user.gender %></span>
-	</div>
+		 	<tr>
+		 		<th>年齢</th>
+		 		<td><%= @user.age %>代</td>
+		 	</tr>
 
-	<div>
-		<span><%= "年齢" %></span>
-		<span><%= @user.age %>代</span>
-	</div>
+		 	<tr>
+		 		<th>紹介文</th>
+		 		<td><%= @user.introduce %></td>
+		 	</tr>
+		</tbody>
+	 </table>
 
-
-	<div>
-		<span><%= "紹介文" %></span>
-		<span><%= @user.introduce %></span>
-	</div>
 
 	<% if @user == current_user %>
 		<span><%= link_to "編集", edit_user_path %></span>
 
-		<span><%= link_to "応募一覧", users_path(@user) %></span>
+		<span><%= link_to'応募一覧', offers_index_path(@user) %></span>
+
+		<span><%= link_to "募集一覧", users_path(@user) %></span>
 
 	<% end %>
 </div>

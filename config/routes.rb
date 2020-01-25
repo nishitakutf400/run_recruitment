@@ -9,6 +9,7 @@ resources :recitments do
 end
 resources :users
 get 'offers/thank' =>'offers#thank'
+get 'offers/index' =>'offers#index'
 
 
 
