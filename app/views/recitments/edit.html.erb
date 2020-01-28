@@ -1,4 +1,4 @@
-<div class="margin-top">
+<div class="width">
 	<h3>応募編集</h3>
 	<%= form_for(@recitment) do |f| %>
 
@@ -12,16 +12,14 @@
 		<%= f.text_area :running_couse %><br>
 
 
-		<%= f.label :"集合時間" %>
-		<%= f.datetime_select :runtime, {}, class:'form-control' %>
+		<%= f.label :"集合時間:" %>
+		<%= f.datetime_select :runtime, class:'form-control' %><br>
 
-		<%= f.label :"走行時間"%><br>
-		
+		<%= f.label :"走行時間or距離"%><br>
+		<%= f.text_area :practice %><br>
 
-		<%= f.label :"人数" %><br>
-
-
-
+		<%= f.label :"募集人数:" %>
+		<%= f.select :nambar_people, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {include_blank: '選択ボックス'}, class: 'sample' %><br>
 
 		<%= f.label :"募集要項" %><br>
 		<%= f.text_area :comment %><br>

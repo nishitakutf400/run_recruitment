@@ -4,34 +4,36 @@
 	 <table class="table">
 	 	<tbody>
 		 	<tr>
-		 		<th>ユーザーネーム</th>
-		 		<td><%= @user.nickname %></td>
+		 		<th width="20%">ユーザーネーム</th>
+		 		<td width="80%"><%= @user.nickname %></td>
 		 	</tr>
 
 		 	<tr>
-		 		<th>性別</th>
-		 		<td><%= @user.nickname %></td>
+		 		<th width="20%">性別</th>
+		 		<td width="80%"><%= @user.nickname %></td>
 		 	</tr>
 
 		 	<tr>
-		 		<th>年齢</th>
-		 		<td><%= @user.age %>代</td>
+		 		<th width="20%">年齢</th>
+		 		<td width="80%"><%= @user.age %>代</td>
 		 	</tr>
 
 		 	<tr>
-		 		<th>紹介文</th>
-		 		<td><%= @user.introduce %></td>
+		 		<th width="20%">紹介文</th>
+		 		<td width="80%"><%= @user.introduce %></td>
 		 	</tr>
 		</tbody>
 	 </table>
 
 
 	<% if @user == current_user %>
-		<span><%= link_to "編集", edit_user_path %></span>
+		<div class="pull-right">
+			<span><%= link_to "編集", edit_user_path %></span>
 
-		<span><%= link_to'応募一覧', offers_index_path(@user) %></span>
+			<span><%= link_to' |応募一覧', offers_index_path(@user) %></span>
 
-		<span><%= link_to "募集一覧", users_path(@user) %></span>
+			<span><%= link_to " |募集一覧", users_path(@user) %></span>
+		</div>
 
 	<% end %>
 </div>

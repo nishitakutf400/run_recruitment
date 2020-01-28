@@ -45,7 +45,7 @@
 							<%= link_to recitment.title, new_user_session_path %>
 						<% end %>
 					</td>
-					<td><%= recitment.runtime.strftime('%Y/%m/%d') %></td>
+					<td><%= recitment.runtime.strftime("%Y-%m-%d") %></td>
 					<td><% if 0 == (recitment.nambar_people - recitment.offers.count) %>
 						<span><font color=#ff0000>応募人数達成</font></span>
 						<% else %>

@@ -10,6 +10,7 @@ class CreateRecitments < ActiveRecord::Migration[5.2]
       t.text :practice, null: false
       t.text :running_couse, null: false
       t.integer :nambar_people, null: false
+      t.datetime :runtime, null: false
     end
   end
 end

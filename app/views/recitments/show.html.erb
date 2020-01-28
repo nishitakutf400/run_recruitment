@@ -1,98 +1,82 @@
-<div class="margin-top">
-<h1><%= @recitment.title %></h1>
+<div class="width">
+<h3><%= @recitment.title %></h3>
 
-<table>
-	<tr>
-		<th>ユーザー名</th>
-		<td><%= @recitment.user.nickname %></td>
-	</tr>
+<table class="table table-hover table-inverse　table-bordered">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th width="20%">ユーザー名</th>
+			<td width="80%"><%= @recitment.user.nickname %></td>
+		</tr>
+		<tr>
+			<th width="20%">集合場所</th>
+			<td width="80%"><%= @recitment.running_couse %></td>
+		</tr>
+		<tr>
+			<th width="20%">集合時間or距離</th>
+			<td width="80%"><%= @recitment.runtime.strftime("%Y-%m-%d %H:%M") %></td>
+		</tr>
+		<tr>
+			<th width="20%">走行時間</th>
+			<td width="80%"><%= @recitment.practice %></td>
+		</tr>
+		<tr>
+			<th width="20%">募集人数</th>
+			<td width="80%"><%= @recitment.nambar_people %>人</td>
+		</tr>
 
+		<tr>
+			<th width="20%">募集要望</th>
+			<td width="80%"><%= @recitment.comment %></td>
+		</tr>
 
-
-	<tr>
-		<th>集合場所</th>
-		<td><%= @recitment.running_couse %></td>
-	</tr>
-
-	<tr>
-		<th>集合時間</th>
-		<td><%= @recitment.runtime.strftime('%Y/%m/%d/%h/%M') %></td>
-	</tr>
-
-	<tr>
-		<th>走行時間</th>
-		<td><%= @recitment.practice %></td>
-	</tr>
-
-	<tr>
-		<th>募集人数</th>
-		<td><%= @recitment.nambar_people %>人</td>
-	</tr>
-
-	<tr>
-		<th>募集要望</th>
-		<td><%= @recitment.comment %></td>
-	</tr>
-
-	<tr>
-		<td>
-
-		</td>
-	</tr>
-
-
-
-</table>
-
-<table>
-
-	<tr>
-		<th>応募状況</th>
-		<td><%= @recitment.offers.count %></td>
-		
-	</tr>
-
-	<td><%= @recitment.nambar_people - @recitment.offers.count %></td>
-
+		<tr>
+			<th width="20%">応募状況</th>
+			<td width="80%"><%= @recitment.offers.count %></td>
+		</tr>
+		<tr>
+			<th width="20%">締切まで</th>
+			<td width="80%">あと<%= @recitment.nambar_people - @recitment.offers.count %>人</td>
+		</tr>
+	</tbody>
 </table>
 
 <% if @recitment.user == current_user %>
-	<table>
-		<tr>
-			<th><%= link_to "応募者", recitment_offers_path(@recitment) %></th>
-		</tr>
-		<tr>
-			<th><%= link_to "募集内容変更", edit_recitment_path(@recitment) %></th>
-		</tr>
-		<tr>
-			<th><%= link_to "中止にする", recitment_path(@recitment), method: :delete %></th>
-		</tr>
-	</table>
-<% else %>
-	<% if @recitment.favorited_by?(current_user) %>
-		<%= link_to recitment_offers_path(@recitment), method: :delete do %>応募をキャンセルする
-		<% end %>
-		<% else %>
 
-		<%= link_to recitment_offers_path(@recitment), method: :post do %>応募する
+<div class="pull-right">
+	<span><%= link_to "応募者", recitment_offers_path(@recitment) %></span>
+	<span><%= link_to " | 募集内容変更", edit_recitment_path(@recitment) %></span>
+	<span><%= link_to " | 中止にする", recitment_path(@recitment), method: :delete %></span>
+</div>
+
+<% else %>
+
+	<% if @recitment.favorited_by?(current_user) %>
+		<span><%= link_to recitment_offers_path(@recitment), method: :delete do %>応募をキャンセルする</span>
+	<% end %>
+	<% else %>
+		<span><%= link_to recitment_offers_path(@recitment), method: :post do %>応募する</span>
 	     <% end %>
 	<% end %>
 <% end %>
 
 <% @recitment.recitment_comments.each do |comment| %>
-	<%= comment.user.nickname %>
-	<%= comment.created_at.strftime('%Y/%m/%d') %>
-	<%= comment.comment %>
+	<div class=>
+		<%= comment.user.nickname %>
+		<%= comment.created_at.strftime('%Y/%m/%d') %>
+		<%= comment.comment %>
+	</div>
 <% end %>
 
 <%= form_for [@recitment, @recitment_comment] do |f| %>
             <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
 <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 <% end %>
-
-
-
-
 
 
 </div>

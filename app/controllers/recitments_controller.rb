@@ -1,4 +1,5 @@
 class RecitmentsController < ApplicationController
+	before_action :authenticate_user!,only: [:show, :edit, :new]
 
 	def index
 		@recitments = Recitment.all
@@ -26,8 +27,11 @@ class RecitmentsController < ApplicationController
 
 	def create
 		@recitment = current_user.recitments.new(recitment_params)
-		@recitment.save
+		if @recitment.save
 		redirect_to root_path(@recitment.id)
+		else
+		render action: :new
+		end
 	end
 
 

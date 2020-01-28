@@ -1,14 +1,18 @@
-<div>
+<div class="width">
 	<h3>募集一覧</h3>
-	<table>
-		<tr>
-			<th>募集タイトル</th>
-			<th>募集時間</th>
-		</tr>
+	<table class="table table-hover table-inverse　table-bordered">
+		<thead>
+			<tr>
+				<th>募集タイトル</th>
+				<th>募集時間</th>
+			</tr>
+		</thead>
 		<% @user.recitments.each do |f| %>
-		<tr>
-			<td><%= link_to f.title, recitment_path(f) %></td>
-			<td><%= f.runtime %></td><% end %>
-		</tr>
+		<tbody>
+			<tr>
+				<td><%= link_to f.title, recitment_path(f) %></td>
+				<td><%= f.runtime.strftime("%Y-%m-%d") %></td><% end %>
+			</tr>
+		</tbody>
 	</table>
 </div>

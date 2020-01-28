@@ -28,9 +28,10 @@ clearfix::after {
   clear: both;
 }
 
- header {
- height: 70px;
- background-color: #e6e6fa;
+ header{
+ height: 130px;
+ background-image: url("../assets/tartan-track-2678543_1280.jpg");
+ background-size: 100% 100%;
  }
 
 .width{
@@ -62,6 +63,23 @@ h3:after {
   border-color: #fff #fff #a8d4ff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }
+
+.right{
+  text-align:right
+}
+
+.margin-top{
+  margin-top: 30px;
+}
+
+body{
+  background-image: url("../assets/b122.jpg");
+}
+
+header.li{
+  font-size:30px;
+}
+
 
 
 

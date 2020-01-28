@@ -1,8 +1,8 @@
-<div class="margin-top">
-	 <h1>応募者一覧</h1>
+<div class="width">
+	 <h3>応募者一覧</h3>
 
 	 <% @offers.each do |offer| %>
-	 <%= offer.user.nickname %>
+	 <%= link_to offer.user.nickname, user_path(offer.user.id) %>
 	 <% end %>
 </div>
 
