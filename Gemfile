@@ -68,7 +68,7 @@ gem 'enum_help'
 gem 'jp_prefecture'
 gem 'rb-readline'
 gem 'ransack'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 
 group :production do
   gem 'mysql2'
